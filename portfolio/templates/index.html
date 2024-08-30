@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Portfolio Website</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <section class="section hero"></section>
+        </div>
+        <div class="image-container">
+            <img class="image-inicio" src="{% static 'img/1.png' %}"
+                alt="image">
+        </div>
+    </div>
+
+    <header>
+        <a href="https://github.com/AngelHer2005" class="logo">ÁNGEL</a>
+
+        <nav>
+            <a href="#home" class="active"> Home</a>
+            <a href="#about_me">About Me</a>
+            <a href="#skills" >Skills</a>
+            <a href="#education" >Education</a>
+            <a href="#project" >Projects</a>
+            <a href="#contact" >Contact</a>
+        </nav>
+    </header>
+    <section id="home">
+        <div class="home-img">
+            <img class="inicio-img" src="{% static 'img/angelperfil.jpeg' %}" alt="">
+        </div>
+        <div class="home-content">
+            <br><br><br>
+            <h1>Hi, It's <span>Angel Hernan Alberto Patricio Arroyo</span></h1>
+            <div class="animated-text">
+                I'm a <span></span>
+                <br><br>
+                <p>I'm 18 years old, I am incredibly passionate about programming, and my enthusiasm fuels a strong commitment to self-improvement. <br>With each line of code, I'm driven by the excitement of learning and growing, determined to harness my own efforts to achieve mastery and make a meaningful impact in the world of technology.
+                </p>
+                <center>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/angelhernanpatricioarroyo/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/AngelHer2005"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.facebook.com/angelhernan.patricioarroyo/"><i class="fa-brands fa-facebook-square"></i></a>
+                        <a href="https://wa.me/997150226"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                    <a href="#" class="btn">Hire me</a>
+                </center>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="about_me">
+        <h1>About Me</h1><br>
+        <p>I'm 18 years old, I'm fascinated by programming, and I'm determined to improve through my own efforts!
+        <br><br>Name: Ángel Hernán Alberto patricio Arroyo
+        <br>Career: Software Engineering with artificial intelligence
+        <br>Age: 18 years old 
+        <br>Languages: English 75%
+        <br>Country: Peru 
+        <br>Academic Education: Institute SENATI - 4°Cycle
+        </p>
+    </section>
+
+    <section id="skills">
+        <h1>My Skills</h1><br>
+        <section class="skills" id="skills">
+            <div class="contenido-seccion">
+                <div class="fila">
+                    <!-- Habilidades Técnicas -->
+                    <div class="col">
+                        <h3>Frontend</h3>
+                        <div class="skill">
+                            <span>HTML</span>
+                            <div class="barra-skill">
+                                <div class="progreso" style="width: 100%;">
+                                    <span>100%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>CSS</span>
+                            <div class="barra-skill">
+                                <div class="progreso" style="width: 70%;">
+                                    <span>70%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>Tailwind CSS</span>
+                            <div class="barra-skill">
+                                <div class="progreso" style="width: 60%;">
+                                    <span>60%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>React.js</span>
+                            <div class="barra-skill">
+                                <div class="progreso" style="width: 50%;">
+                                    <span>50%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Habilidades Backend -->
+                    <div class="col">
+                        <h3>Backend</h3>
+                        <div class="skill">
+                            <span>Python</span>
+                            <div class="barra-skill">
+                                <div class="progreso" style="width: 85%;">
+                                    <span>85%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>JavaScript</span>
+                            <div class="barra-skill">
+                                <div class="progreso" style="width: 60%;">
+                                    <span>60%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>Java</span>
+                            <div class="barra-skill">
+                                <div class="progreso" style="width: 85%;">
+                                    <span>85%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>PHP</span>
+                            <div class="barra-skill">
+                                <div class="progreso" style="width: 40%;">
+                                    <span>40%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Habilidades de Bases de Datos -->
+                <div class="fila">
+                    <div class="col">
+                        <h3>Base de Datos</h3>
+                        <div class="skill">
+                            <span>SQL Server</span>
+                            <div class="barra-skill">
+                                <div class="progreso" style="width: 80%;">
+                                    <span>80%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span>MySQL</span> 
+                            <div class="barra-skill">
+                                <div class="progreso" style="width: 100%;">
+                                    <span>100%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    
+    <section id="education">
+        <h1>Education</h1>
+
+    </section>
+
+    <section id="project">
+        <h1>Projects</h1>
+        <button>Download CV</button>
+
+    </section>
+
+    <section id="contact">
+        <h1>Contact</h1>
+        <div class="fila">
+            <div class="col">
+                <input type="text" placeholder="Tú Nombre">
+                <input type="text" placeholder="Número telefónico">
+                <input type="text" placeholder="Dirección de correo">
+                <input type="text" placeholder="Tema">
+                <textarea name="" id="" cols="30" rows="10" placeholder="Mensaje"></textarea>
+                <button>Enviar Mensaje  <i class="fa-solid fa-paper-plane"></i>
+                    <span class="overlay"></span>
+                </button>
+            </div>
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
