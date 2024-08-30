@@ -100,8 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.getElementById("downloadCV").addEventListener("click", function() {
-        function abrirPDF() {
-            // Reemplaza con la URL directa de tu archivo PDF
             var pdfUrl = "https://github.com/AngelHer2005/Personal-Portfolio/tree/main/personal_site/static/img/CV_ANGEL_PATRICIO.pdf";
             
             if (pdfUrl) {
@@ -110,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error("La URL del PDF no es válida.");
             }
         }
-    });
+    );
 
     window.onscroll = function(){
         efectoHabilidades();
