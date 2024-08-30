@@ -180,7 +180,7 @@ span{
     position: relative;
     width: 32vw;
     border-radius: 50%;
-    box-shadow: 0 0 25px solid #0f750d;
+    box-shadow: 0 0 100px #0f750d;;
     cursor: pointer;
     transition: 0.2s linear;
 }
