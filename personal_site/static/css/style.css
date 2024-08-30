@@ -10,48 +10,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.wrapper,
-.content {
-    position: relative;
-    width: 100%;
-    z-index: 1;
-}
-
-.content {
-    overflow-x: hidden;
-}
-
-.content .section {
-    width: 100%;
-    height: 80vh;
-}
-
-.content .section.hero {
-    background-image: url(https://images.unsplash.com/photo-1589848315097-ba7b903cc1cc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.image-container {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    perspective: 500px;
-    overflow: hidden;
-}
-
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-}
-
 html{
     font-size: 62.5%;
 }
@@ -136,6 +94,77 @@ nav a.active{
         padding: 1rem;
         border-radius: 0.5rem;
         border-bottom: 0.5rem solid #0f750d;
+    }
+}
+
+.hamburg,
+.cancel,
+.dropdown {
+    display: none;
+}
+
+nav {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .hamburg {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        color: white;
+        font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+    }
+
+    .dropdown {
+        z-index: 100;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-500px);
+        width: 100%;
+        height: auto;
+        backdrop-filter: blur(4px) brightness(40%);
+        box-shadow: 0 0 20px black;
+        transition: 0.5s linear;
+        display: block;
+    }
+
+    .dropdown .links {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; 
+    }
+
+    .dropdown .links a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 1rem;
+        text-align: center;
+        transition: 0.3s linear;
+        font-size: 2.5rem;
+        width: 100%;
+    }
+
+    .dropdown .links a:hover {
+        background-color: #0f750d;
+    }
+
+    .cancel {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        color: white;
+        font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+    }
+
+    nav {
+        display: none;
     }
 }
 
@@ -260,6 +289,38 @@ span{
     animation: cursor .8s infinite, typing 20s steps(14) infinite;
 }
 
+@media (max-width: 768px) {
+    .content p {
+        font-size: 1.4rem;
+    }
+
+    .animated-text {
+        font-size: 3rem;
+    }
+    #home .home-content h1 {
+        font-size: 3.4rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .content p {
+        font-size: 1.2rem;
+    }
+
+    .animated-text {
+        font-size: 2rem;
+    }
+    
+    .animated-text span{
+        font-size: 2.2rem;
+    }
+
+    #home .home-content h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+    }
+}
+
 button{
     width: 50%;
     height: 10vh;
@@ -282,12 +343,27 @@ button:hover{
     box-shadow: 0 0 40px 5px #0f750d;
 }
 
-#about_me, #skills, #education, #project, #contact {
+@media (max-width: 768px) {
+    button {
+        width: 80%;
+        height: auto;
+        font-size: 100%;
+        margin: 20px auto;
+    }
+}
+
+#about_me, #skills h1, #education, #project, #contact {
     font-size: 34px;
     font-weight: 600;
     min-width: 280px;
     color: #0f750d;
     text-align: center;
+    border: 0;
+    margin: 0;
+}
+
+body section#about_me{
+    min-height: 0;
 }
 
 #about_me p{
@@ -298,13 +374,32 @@ button:hover{
     border-radius: 50px;
     color: black;
     font-size: 2.5rem;
+    margin: 0;
 }
 
 #about_me p:hover{
     color:#0f750d;
     background-color: black;
-    border: 10px solid #0f750d;
+    border: 3px solid #0f750d;
     box-shadow: 0 0 40px 5px #0f750d;
+}
+
+@media (min-width: 1200px) {
+    #about_me p {
+        padding: 3em;
+        font-size: 3rem;
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    #about_me p {
+        padding: 1em;
+        font-size: 1.5rem;
+        border-radius: 20px;
+    }
+
 }
 
 @keyframes cursor {
@@ -367,57 +462,55 @@ button:hover{
 }
 
 
-.skills{
+#skills{
     background-color: black;
-    color: #ffffff;
-    padding: 50px 20px;
-    border-radius: 50px;
-    border: 10px solid #0f750d;
-    box-shadow: 0 0 40px 5px #0f750d;
+    color: #fff;
+    padding: 0 0;
+    font-family: 'Work Sans';
+    border: 0 0;
 }
-.skills .contenido-seccion{
+
+#skills h1{
+    font-size: 51px;
+}
+#skills .contenido-seccion{
     max-width: 1100px;
     margin: auto;
 }
-.skills h2{
-    font-size: 48px;
-    font-family: 'Righteous';
-    text-align: center;
-    padding: 20px 0;
-
-}
-.skills .fila{
+#skills .fila{
     display: flex;
 }
-.skills .fila .col{
+#skills .fila .col{
     width: 50%;
     padding: 0 20px;
 }
-.skills .fila .col h3{
-    font-size: 1.5em;
-    font-family: Arial, Helvetica, sans-serif;
+#skills .fila .col h3{
+    font-size: 30px;
     margin-bottom: 25px;
+    font-weight: bold;
 }
-.skills .skill > span{
+#skills .skill > span{
     font-weight: bold;
     display: block;
     margin-bottom: 10px;
+    color:white;
+    font-size: 2em;
 }
-.skills .skill .barra-skill{
+#skills .skill .barra-skill{
     height: 8px;
     width: 80%;
     background-color: rgba(255, 255, 255, 0.164);
     position: relative;
     margin-bottom: 30px;
 }
-.skills .skill .progreso{
+#skills .skill .progreso{
     background-color: #14d725;
     position: absolute;
     top: 0;
     left: 0;
     height: 8px;
 }
-.skills .skill .barra-skill span{
+#skills .skill .barra-skill span{
     position: absolute;
     height: 40px;
     width: 40px;
@@ -430,8 +523,8 @@ button:hover{
     font-size: 14px;
     color: #ffffffd4
 }
-/* Estas clases se agregaran dinamicamente mediante javascript */
-.skills .skill .javascript{
+
+#skills .skill .javascript{
     width: 0%;
     animation: 2s javascript forwards;
 }
@@ -440,7 +533,7 @@ button:hover{
     100%{width: 75%;}
 }
 
-.skills .skill .htmlcss{
+#skills .skill .htmlcss{
     width: 0%;
     animation: 2s htmlcss forwards;
 }
@@ -449,7 +542,7 @@ button:hover{
     100%{width: 89%;}
 }
 
-.skills .skill .photoshop{
+#skills .skill .photoshop{
     width: 0%;
     animation: 2s photoshop forwards;
 }
@@ -458,7 +551,7 @@ button:hover{
     100%{width: 85%;}
 }
 
-.skills .skill .wordpress{
+#skills .skill .wordpress{
     width: 0%;
     animation: 2s wordpress forwards;
 }
@@ -467,7 +560,7 @@ button:hover{
     100%{width: 85%;}
 }
 
-.skills .skill .drupal{
+#skills .skill .drupal{
     width: 0%;
     animation: 2s drupal forwards;
 }
@@ -476,7 +569,7 @@ button:hover{
     100%{width: 55%;}
 }
 
-.skills .skill .comunicacion{
+#skills .skill .comunicacion{
     width: 0%;
     animation: 2s comunicacion forwards;
 }
@@ -485,7 +578,7 @@ button:hover{
     100%{width: 80%;}
 }
 
-.skills .skill .trabajo{
+#skills .skill .trabajo{
     width: 0%;
     animation: 2s trabajo forwards;
 }
@@ -494,7 +587,7 @@ button:hover{
     100%{width: 70%;}
 }
 
-.skills .skill .creatividad{
+#skills .skill .creatividad{
     width: 0%;
     animation: 2s creatividad forwards;
 }
@@ -503,7 +596,7 @@ button:hover{
     100%{width: 80%;}
 }
 
-.skills .skill .dedicacion{
+#skills .skill .dedicacion{
     width: 0%;
     animation: 2s dedicacion forwards;
 }
@@ -512,11 +605,23 @@ button:hover{
     100%{width: 65%;}
 }
 
-.skills .skill .proyect{
+#skills .skill .proyect{
     width: 0%;
     animation: 2s proyect forwards;
 }
 @keyframes proyect {
     0%{width: 0%;}
     100%{width: 60%;}
+}
+
+@media screen and (max-width:700px){
+    #skills .fila{
+        display: block;
+    }
+    #skills .fila .col{
+        width: 100%;
+    }
+    #skills .fila .col .barra-skill{
+        width: 100%;
+    }
 }

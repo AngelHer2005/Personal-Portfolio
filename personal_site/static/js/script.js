@@ -1,123 +1,118 @@
-console.clear();
-
-gsap.registerPlugin(ScrollTrigger);
-
-window.addEventListener("load", () => {
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: ".wrapper",
-        start: "top top",
-        end: "+=150%",
-        pin: true,
-        scrub: true,
-        markers: false,
-      }
-    })
-    .to(".image-inicio", {
-      scale: 2,
-      z: 350,
-      transformOrigin: "center center",
-      ease: "power1.inOut"
-    })
-    .to(
-      ".section.hero",
-      {
-        scale: 1.1,
-        transformOrigin: "center center",
-        ease: "power1.inOut"
-      },
-      "<"
-    )
-    .to(".element", {
-      scrollTrigger: {
-        trigger: ".element",
-        start: "top center",
-        end: "bottom center",
-        markers: false,
-      },
-    })
-});
-
-function hamburg(){
-    const navbar = document.querySelector(".dropdown")
-    navbar.style.transform = "translateY(0px)"
-}
-
-function cancel(){
-    const navbar = document.querySelector(".cancel")
-    navbar.style.transform = "translateY(-500px)"
-}
-
-const texts = [
-    "SOFTWARE ENGINEER",
-    "AI DEVELOPER",
-    "WEB DEVELOPER",
-    "BACKEND DEVELOPER",
-    "FULLSTACK DEVELOPER"
-]
-
-const speed = 100;
-const textElements = document.querySelector(".typewriter-text")
-
-let textIndex = 0,
-    characterIndex = 0;
-
-function typeWriter(){
-    if(characterIndex <texts[textIndex].length){
-        textElements.innerHTML += texts[textIndex].charAt(characterIndex);
-        characterIndex++;
-        setTimeout(typeWriter, speed);
-    }else{
-        setTimeout(eraseText, 1000)
+document.addEventListener('DOMContentLoaded', () => {
+    function hamburg() {
+        const navbar = document.querySelector(".dropdown");
+        navbar.style.transform = "translateX(0)";
     }
-}
 
-function eraseText(){
-    if(textElements.innerHTML.length > 0){
-        textElements.innerHTML = textElements.innerHTML.slice(0, -1);
-        setTimeout(eraseText, 50);
-    }else{
-        textIndex = (textIndex + 1)%texts.length;
-        characterIndex = 0;
-        setTimeout(typeWriter, 500)
+    function cancel() {
+        const navbar = document.querySelector(".dropdown");
+        navbar.style.transform = "translateX(-500px)";
     }
-}
 
-window.onload = typeWriter;
+    const dropdownLinks = document.querySelectorAll('.dropdown .links a');
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            cancel();
+        });
+    });
 
-// Scroll automático
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
+    document.querySelector('.hamburg').addEventListener('click', hamburg);
+    document.querySelector('.cancel').addEventListener('click', cancel);
 
-        if (targetElement) {
-            const startPosition = window.pageYOffset;
-            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            const duration = 1000;
-            let startTime = null;
+    const navLinks = document.querySelectorAll('nav a');
+    const allLinks = [...navLinks, ...dropdownLinks];
 
-            function animation(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const progress = Math.min(timeElapsed / duration, 1); 
-                const easing = 0.5 - Math.cos(progress * Math.PI) / 2;
+    allLinks.forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if (this.closest('.dropdown')) {
+                cancel();
+            }
+            e.preventDefault();
 
-                window.scrollTo(0, startPosition + (distance * easing));
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
 
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation);
+            if (targetElement) {
+                const startPosition = window.pageYOffset;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = 1000;
+                let startTime = null;
+
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    const easing = 0.5 - Math.cos(progress * Math.PI) / 2;
+
+                    window.scrollTo(0, startPosition + (distance * easing));
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    } else {
+                        window.scrollTo(0, targetPosition);
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            }
+        });
+    });
+
+    // Función para actualizar la clase activa
+    function updateActiveLink() {
+        const scrollPosition = window.pageYOffset;
+        allLinks.forEach(link => {
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const targetHeight = targetElement.offsetHeight;
+
+                if (scrollPosition >= targetPosition - 50 && scrollPosition < targetPosition + targetHeight - 50) {
+                    link.classList.add('active');
                 } else {
-                    window.scrollTo(0, targetPosition);
+                    link.classList.remove('active');
                 }
             }
+        });
+    }
 
-            requestAnimationFrame(animation);
+    window.addEventListener('scroll', updateActiveLink);
+    window.addEventListener('load', updateActiveLink); // Actualiza el estado activo al cargar la página
+
+    function efectoHabilidades(){
+        var skills = document.getElementById("skills");
+        var distancia_skills = window.innerHeight - skills.getBoundingClientRect().top;
+        if(distancia_skills >= 300){
+            let habilidades = document.getElementsByClassName("progreso");
+            habilidades[0].classList.add("javascript");
+            habilidades[1].classList.add("htmlcss");
+            habilidades[2].classList.add("photoshop");
+            habilidades[3].classList.add("wordpress");
+            habilidades[4].classList.add("drupal");
+            habilidades[5].classList.add("comunicacion");
+            habilidades[6].classList.add("trabajo");
+            habilidades[7].classList.add("creatividad");
+            habilidades[8].classList.add("dedicacion");
+            habilidades[9].classList.add("javascript");
+        }
+    }
+
+    document.getElementById("downloadCV").addEventListener("click", function() {
+        function abrirPDF() {
+            // Reemplaza con la URL directa de tu archivo PDF
+            var pdfUrl = "https://github.com/AngelHer2005/Personal-Portfolio/tree/main/personal_site/static/img/CV_ANGEL_PATRICIO.pdf";
+            
+            if (pdfUrl) {
+                window.open(pdfUrl, '_blank');
+            } else {
+                console.error("La URL del PDF no es válida.");
+            }
         }
     });
-});
 
+    window.onscroll = function(){
+        efectoHabilidades();
+    } 
+});
